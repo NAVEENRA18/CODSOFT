@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Solution Contest</title>
+  <link rel="stylesheet" href="Landing Page CSS.css">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <h1>Solve the Traffic Problem & Win Big!</h1>
+    <p>Submit your creative solutions for a chance to win exciting prizes and help improve traffic in our city.</p>
+    <a href="#submit" class="cta-btn">Enter the Contest</a>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">1. Sign up or Log in.</div>
+      <div class="step">2. Submit your creative solution.</div>
+      <div class="step">3. Get your solution reviewed.</div>
+      <div class="step">4. Win prizes and recognition!</div>
+    </div>
+  </section>
+
+  <!-- Prizes -->
+  <section id="prizes">
+    <h2>Exciting Prizes Await You!</h2>
+    <p>Top 3 winners will receive a $500 cash prize and more!</p>
+  </section>
+
+  <!-- Submission Form -->
+  <section id="submit">
+    <h2>Submit Your Solution</h2>
+    <form action="submit.php" method="post">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="solution" placeholder="Describe Your Solution" required></textarea>
+      <input type="submit" value="Submit My Solution">
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Contact us: info@trafficcontest.com</p>
+    <p>Follow us on: [Social Media Links]</p>
+  </footer>
+  <script>
+    // Wait for the DOM to load before adding event listeners
+    document.addEventListener("DOMContentLoaded", function() {
+      // Get references to form elements
+      const form = document.getElementById('submissionForm');
+      const nameField = document.getElementById('name');
+      const emailField = document.getElementById('email');
+      const solutionField = document.getElementById('solution');
+      const formMessage = document.getElementById('formMessage');
+      
+      // Handle form submission
+      form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent page reload
+
+        // Clear previous messages
+        formMessage.textContent = '';
+
+        // Validate input fields
+        if (!nameField.value || !emailField.value || !solutionField.value) {
+          formMessage.textContent = 'Please fill out all fields.';
+          formMessage.style.color = 'red';
+          return; // Stop further processing
+        }
+
+        // Simple email format validation
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailPattern.test(emailField.value)) {
+          formMessage.textContent = 'Please enter a valid email address.';
+          formMessage.style.color = 'red';
+          return;
+        }
+
+        // If all inputs are valid, simulate submission (for demo purposes)
+        // Here, you would send the data to your backend via AJAX (e.g., using fetch or XMLHttpRequest)
+        formMessage.textContent = 'Thank you for your submission! We will review it soon.';
+        formMessage.style.color = 'green';
+
+        // Clear form fields after submission
+        nameField.value = '';
+        emailField.value = '';
+        solutionField.value = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
